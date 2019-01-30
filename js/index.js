@@ -42,13 +42,14 @@ contentAll.addEventListener("keydown", e => {
 
 
  //---Event Listener's Three and Four = click and dblclick---
-
+//###### USED stopPROPAGATION ON BUTTONS
 
 
 const bttons = document.querySelectorAll('.btn');
 
 
 bttons[0].addEventListener('click',(e) => {
+    e.stopPropagation();
     e.target.style.color = 'red';
     e.target.style.background = 'black';
     bttons[1].style.color ='white';
@@ -59,7 +60,6 @@ bttons[0].addEventListener('click',(e) => {
     
 
     bttons[0].addEventListener('dblclick',(e) => {
-        
         e.target.style.color = 'white';
         e.target.style.background = '#17A2B8';
         bttons[1].style.color ='white';
@@ -70,6 +70,7 @@ bttons[0].addEventListener('click',(e) => {
     
 
  bttons[1].addEventListener('click', (e)=> {
+     e.stopPropagation();
      e.target.style.color = 'gold';
      e.target.style.background = 'midnightblue';
      bttons[0].style.color ='silver';
@@ -80,7 +81,6 @@ bttons[0].addEventListener('click',(e) => {
      });
 
      bttons[1].addEventListener('dblclick',(e) => {
-    
         e.target.style.color = 'white';
         e.target.style.background = '#17A2B8';
         bttons[0].style.color ='white';
@@ -90,6 +90,7 @@ bttons[0].addEventListener('click',(e) => {
         });
     
 bttons[2].addEventListener('click', (e)=> {
+     e.stopPropagation();
      e.target.style.color = 'black';
      e.target.style.background = 'yellow';
      bttons[0].style.color ='orange';
@@ -182,15 +183,47 @@ navAs[3].addEventListener('mouseout', (e)=> {
 ///--Event 7 WHEEL and prevent default----------------------------
 
 const paras = document.querySelectorAll('p');
+const scroller = document.getElementById('scroller');
 
 paras[0].addEventListener("wheel", e => {
     e.preventDefault();
     e.target.style.color = getRandomColor();
+    scroller.style.color = getRandomColor();
+    
 });
 
 
 // Event Listenter 8 MouseLeave---------------------------------
 
+const dontDoIt = document.getElementById('dont');
+
 paras[1].addEventListener("mouseleave", e => {
     e.target.style.textDecoration = "line-through";
+    dontDoIt.textContent = "It's a trap. Don't Go!!";
+
+    setTimeout(function() {
+        e.target.style.textDecoration ="";
+        dontDoIt.textContent ="But seriously... Don't.";
+    },3000)
+},false);
+
+// Event listender 9 
+contentAll.addEventListener("keypress", (e)=>{
+    if (e.key == "c") {
+    e.stopPropagation();
+    e.target.style.background = "midnightblue";
+    e.target.style.color = "white";
+ }
 });
+
+
+const behindTheScenes = document.querySelector('.home');
+
+
+behindTheScenes.addEventListener("click", e => {
+    e.target.style.background = "darkgrey";
+
+    setTimeout(function(){
+        e.target.style.background = "";
+    },1000)
+},false);
