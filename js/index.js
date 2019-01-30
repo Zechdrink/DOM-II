@@ -202,7 +202,7 @@ paras[1].addEventListener("mouseleave", e => {
     dontDoIt.textContent = "It's a trap. Don't Go!!";
 
     setTimeout(function() {
-        e.target.style.color ="white";
+        e.target.textContent = encode(paras[1].textContent);
         dontDoIt.textContent ="But seriously... Don't.";
         dontDoIt.textContent.fontSize = "1000px";
     },3000)
@@ -229,7 +229,45 @@ contentAll.addEventListener("click", e => {
     },1000)
 },false);
 
-window.addEventListener("load", function(){
-alert("Virus Succesfully Transferred");
-})
 
+function encode(string){
+    let newString = "";
+    options = `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,?!;'"`
+    for (let i = 0;i < string.length; i++){
+        if(string[i]===" "){
+            newString += " ";
+        } else if (string[i] !== " "){
+        let randomString = options.charAt(Math.floor(Math.random() * options.length));
+        newString += randomString;
+        }
+    }
+    return newString;
+    }
+
+const adventureAwaits = document.getElementById('adventure');
+
+window.addEventListener("load", function() {
+    // paras[2].stopPropagation();
+    paras[2].textContent = encode(paras[2].textContent);
+    paras[2].style.background = "white";
+    adventureAwaits.textContent = encode(adventureAwaits.textContent);
+    let newBttn  = document.createElement("BUTTON");
+    let bttnText = document.createTextNode("Click to Decode");
+    newBttn.appendChild(bttnText);
+    newBttn.style.height = "50px";
+    newBttn.style.width = "225px";
+    newBttn.style.borderRadius = "50px";
+    newBttn.style.marginLeft = "10px";
+    newBttn.style.background = "#17A2B8"
+    newBttn.style.color = "white";
+    paras[2].appendChild(newBttn);
+
+    newBttn.addEventListener("click", e => {
+        alert("Virus Successfully Uploaded. RUINYOURLIFEWAREv2.0");
+        adventureAwaits.textContent = "Adventure Awaits";
+        paras[2].innerHTML = `Adventure webdesign pretty design design, excursion cute WordPress blogger design webdesign adventure. Pretty simple traveling fun WordPress wanderlust darn simple organized.
+        <br><br> Expedition colorful design simple excursion blogger blogger design WordPress design,design organized website theme.`
+    })
+
+
+})
