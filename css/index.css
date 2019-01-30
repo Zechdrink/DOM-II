@@ -129,6 +129,9 @@ table {
 * {
   box-sizing: border-box;
 }
+*::selection {
+  background: white;
+}
 html {
   font-size: 62.5%;
 }
@@ -180,6 +183,7 @@ img {
   background: #FFFFFF;
   border-bottom: 2px dashed #C0C0C0;
   position: fixed;
+  color: black !important;
 }
 .main-navigation .nav-container {
   height: 100%;
