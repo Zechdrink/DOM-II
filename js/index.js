@@ -202,8 +202,9 @@ paras[1].addEventListener("mouseleave", e => {
     dontDoIt.textContent = "It's a trap. Don't Go!!";
 
     setTimeout(function() {
-        e.target.style.textDecoration ="";
+        e.target.style.color ="white";
         dontDoIt.textContent ="But seriously... Don't.";
+        dontDoIt.textContent.fontSize = "1000px";
     },3000)
 },false);
 
@@ -220,10 +221,15 @@ contentAll.addEventListener("keypress", (e)=>{
 const behindTheScenes = document.querySelector('.home');
 
 
-behindTheScenes.addEventListener("click", e => {
-    e.target.style.background = "darkgrey";
+contentAll.addEventListener("click", e => {
+    e.target.style.background = getRandomColor();
 
     setTimeout(function(){
         e.target.style.background = "";
     },1000)
 },false);
+
+window.addEventListener("load", function(){
+alert("Virus Succesfully Transferred");
+})
+
